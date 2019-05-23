@@ -1,0 +1,68 @@
+#see description baseURL/basePathForSwagger/ui
+
+
+
+#app.py
+
+import connexion
+
+
+app = connexion.App(__name__,specification_dir='./')
+
+
+app.add_api('swagger.yml')
+
+
+app.run(port=portnumber)
+
+
+
+#swagger.yml
+swagger: "2.0"
+info:
+	description: Text for the Documentation description (without double quotes)"
+	version: Versionnumber in doublequotes
+	title: Title for cumentation without double quotes
+consumes:
+	- requestformat in double quotes e.g "application/json"
+produces:
+	- returnformat in double quotes e.g "application/json"
+	
+basePath: basePath for the restapi in doublequotes	
+	
+
+#Now we add the paths
+paths:
+	/endpointname:
+		Method: (post/get/delete)
+			operationId: modulename.funktionsname eg people.read
+			tags:
+				- tag on which the doc is displayed in double quotes
+			summary: Endpointsummary in double quotes
+			description: Endpointdescription in double quotes
+			responses: #Add a section for every response
+				200:
+					description: eg. Success in double quotes:
+					schema:
+						type: return type in double quotes e.g "array"
+						items:
+							properties:
+								#Insert the returned properties with the datatype
+								e.g 
+								fname:
+									type: "string"
+				
+	/endpointname:
+    Method: (post/get/delete)
+		operationId: modulename.funktionsname eg people.read
+		tags:
+			- tag on which the doc is displayed in double quotes
+		summary: Endpointsummary in double quotes
+		description: Endpointdescription in double quotes
+		parameters:
+		- in: "query"
+			name: parametername
+			type: Typeof the inputparameter
+		responses:
+			200:
+				description: eg. Success in double quotes:

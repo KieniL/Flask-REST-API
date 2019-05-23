@@ -1,0 +1,68 @@
+swagger: "2.0"
+info:
+  description: This is the swagger file that goes with our server code
+  version: "1.20"
+  title: Swagger REST Article
+produces:
+  - "application/json"
+
+basePath: "/api"
+
+# Paths supported by the server application
+paths:
+  /people:
+    get:
+      operationId: "people.read"
+      tags:
+        - "People"
+      summary: "The people data structure supported by the server application"
+      description: "Read the list of people"
+      responses:
+        200:
+          description: "Successful read people list operation"
+          schema:
+            type: "array"
+            items:
+              properties:
+                fname:
+                  type: "string"
+                lname:
+                  type: "string"
+                timestamp:
+                  type: "string"
+  /test:
+    get:
+      operationId: "test.test"
+      tags:
+        - "test"
+      summary: "Das ist eine test methode"
+      description: "Gibt einen test aus"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            type: "array"
+            items:
+              properties:
+                fname:
+                  type: "string"
+                lname:
+                  type: "string"
+                timestamp:
+                  type: "string"
+        405:
+          description: "do get instead"
+  /testWithInput:
+    get:
+      operationId: "test.testWithInput"
+      tags:
+        - "TestWithInput"
+      summary: "Das ist eine test methode"
+      description: "Gibt einen test aus"
+      parameters:
+      - in: "query"
+        name: test
+        type: string
+      responses:
+        200:
+          description: OK
